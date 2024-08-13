@@ -1,7 +1,7 @@
 {
   //"extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    //"outDir": "build/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000",
+    "outDir": "build/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000",
     "incremental": true, /* Enables incremental builds */
     "target": "es2017", /* Specifies the ES2017 target, compatible with Coherent GT */
     "module": "es2015", /* Ensures that modules are at least es2015 */

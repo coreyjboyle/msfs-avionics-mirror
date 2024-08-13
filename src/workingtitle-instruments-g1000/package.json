@@ -6,11 +6,13 @@
   "scripts": {
     "build": "npm run build:compile && npm run build:rollup && npm run build:copies",
     "build:compile": "npx tsc",
-    "build:rollup": "mkdir -p build/workingtitle-instruments-g1000/html_ui && rsync -auv --include '*.css' html_ui/ build/workingtitle-instruments-g1000/html_ui && npx rollup -c rollup.config.js",
-    "build:copies": "npm run build:copies:extras & npm run build:copies:garminsdk && npm run build:copies:msfssdk",
-    "build:copies:extras": "mkdir -p dist/workingtitle-instruments-g1000/html_ui && rsync -auv --include '*.svg' --include '*.png' --include '*.html' --include '*.json' --include '*.ttf' html_ui/ dist/workingtitle-instruments-g1000/html_ui",
-    "build:copies:garminsdk": "mkdir -p dist/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000/Libraries && cp node_modules/@microsoft/msfs-garminsdk/garminsdk-iife.js dist/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000/Libraries/garminsdk.js",
-    "build:copies:msfssdk": "mkdir -p dist/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000/Libraries && cp node_modules/@microsoft/msfs-sdk/msfssdk-iife.js dist/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000/Libraries/msfssdk.js"
+    "build:mkdir": "mkdir build\\workingtitle-instruments-g1000\\html_ui",
+    "build:rollup": "robocopy html_ui *.css build/workingtitle-instruments-g1000/html_ui /s & npx rollup -c rollup.config.js",
+    "build:copies": "npm run build:copies:extras & npm run build:copies:mkdir & npm run build:copies:garminsdk && npm run build:copies:msfssdk",
+    "build:copies:extras": "robocopy html_ui *.svg *.png *.html *.json *.ttf dist/workingtitle-instruments-g1000/html_ui /s",
+    "build:copies:mkdir": "mkdir dist\\workingtitle-instruments-g1000\\html_ui\\Pages\\VCockpit\\Instruments\\NavSystems\\WTG1000\\Libraries",
+    "build:copies:garminsdk": "cp node_modules/@microsoft/msfs-garminsdk/garminsdk-iife.js dist/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000/Libraries/garminsdk.js",
+    "build:copies:msfssdk": "cp node_modules/@microsoft/msfs-sdk/msfssdk-iife.js dist/workingtitle-instruments-g1000/html_ui/Pages/VCockpit/Instruments/NavSystems/WTG1000/Libraries/msfssdk.js"
   },
   "repository": {
     "type": "git",
